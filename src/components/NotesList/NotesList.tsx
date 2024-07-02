@@ -1,4 +1,4 @@
-import { useNotesStore } from "@/store/notes";
+import { useNotesStore } from "@/store";
 import NoteCard from "./NoteCard";
 
 const NotesList = () => {

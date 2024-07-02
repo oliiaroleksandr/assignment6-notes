@@ -1,6 +1,6 @@
 import { NoteSchema } from "@/validations";
 import NoteForm from "../NoteForm";
-import { useNotesStore } from "@/store/notes";
+import { useNotesStore } from "@/store";
 import { toast } from "sonner";
 import { v4 as uuidv4 } from "uuid";
 
@@ -13,6 +13,7 @@ const CreateNoteForm = ({ onDialogClose }: Props) => {
 
   const handleSubmit = (values: NoteSchema) => {
     const id = uuidv4();
+    
     const createdAt = new Date().toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",

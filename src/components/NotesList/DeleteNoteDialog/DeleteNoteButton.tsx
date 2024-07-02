@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui";
-import { useNotesStore } from "@/store/notes";
+import { useNotesStore } from "@/store";
 import { toast } from "sonner";
 
 type Props = {

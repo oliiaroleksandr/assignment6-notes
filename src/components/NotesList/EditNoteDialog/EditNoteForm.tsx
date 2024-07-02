@@ -1,5 +1,5 @@
 import { NoteSchema } from "@/validations";
-import { useNotesStore } from "@/store/notes";
+import { useNotesStore } from "@/store";
 import { toast } from "sonner";
 import NoteForm from "@/components/NoteForm";
 
