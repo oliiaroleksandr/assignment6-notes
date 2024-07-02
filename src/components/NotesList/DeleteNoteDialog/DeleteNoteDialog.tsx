@@ -11,14 +11,21 @@ import {
 } from "@/components/ui";
 import { TrashIcon } from "lucide-react";
 import DeleteNoteButton from "./DeleteNoteButton";
+import { useState } from "react";
 
 type Props = {
   id: string;
 };
 
 const DeleteNoteDialog = ({ id }: Props) => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
   return (
-    <AlertDialog>
+    <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
       <AlertDialogTrigger asChild>
         <Button
           size="icon"
@@ -39,7 +46,7 @@ const DeleteNoteDialog = ({ id }: Props) => {
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <DeleteNoteButton id={id} />
+          <DeleteNoteButton id={id} onDialogClose={handleClose} />
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

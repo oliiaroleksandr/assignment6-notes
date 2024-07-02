@@ -1,5 +1,4 @@
 import { useState } from "react";
-import CreateNoteForm from "./CreateNoteForm";
 import {
   Button,
   Dialog,
@@ -7,10 +6,17 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui";
-import { PlusIcon } from "lucide-react";
+} from "@/components/ui";
+import EditNoteForm from "./EditNoteForm";
+import { NoteSchema } from "@/validations";
+import { PencilIcon } from "lucide-react";
 
-const CreateNoteDialog = () => {
+type Props = {
+  id: string;
+  defaultValues: NoteSchema;
+};
+
+const CreateNoteDialog = (props: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const handleDialogClose = () => {
@@ -20,15 +26,15 @@ const CreateNoteDialog = () => {
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
-        <Button>
-          <PlusIcon className="h-4 w-4 mr-2" /> Create note
+        <Button size="icon" className="rounded-full" aria-label="Edit">
+          <PencilIcon className="h-4 w-4" />
         </Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
           <DialogTitle>Create note</DialogTitle>
         </DialogHeader>
-        <CreateNoteForm onDialogClose={handleDialogClose} />
+        <EditNoteForm onDialogClose={handleDialogClose} {...props} />
       </DialogContent>
     </Dialog>
   );
