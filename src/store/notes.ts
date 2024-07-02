@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { persist, createJSONStorage } from "zustand/middleware";
 
-type Note = {
+export type Note = {
   id: string;
   title: string;
   backgroundColor: string;
