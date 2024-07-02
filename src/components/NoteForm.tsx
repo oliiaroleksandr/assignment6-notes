@@ -10,6 +10,7 @@ import {
   Button,
   Input,
   Checkbox,
+  AutosizeTextarea,
 } from "./ui";
 import { NoteSchema, noteSchema } from "@/validations";
 
@@ -30,7 +31,7 @@ const NoteForm = ({ onSubmit, defaultValues }: Props) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <FormField
           control={form.control}
           name="title"
@@ -38,7 +39,7 @@ const NoteForm = ({ onSubmit, defaultValues }: Props) => {
             <FormItem>
               <FormLabel>Title</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <AutosizeTextarea {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -73,7 +74,7 @@ const NoteForm = ({ onSubmit, defaultValues }: Props) => {
           )}
         />
         <Button type="submit" className="w-full">
-          Create
+          Submit
         </Button>
       </form>
     </Form>

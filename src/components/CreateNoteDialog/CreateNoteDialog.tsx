@@ -26,7 +26,7 @@ const CreateNoteDialog = () => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create note</DialogTitle>
+          <DialogTitle className="text-xl">Create note</DialogTitle>
         </DialogHeader>
         <CreateNoteForm onDialogClose={handleDialogClose} />
       </DialogContent>

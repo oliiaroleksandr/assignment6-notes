@@ -5,4 +5,6 @@ export { Input } from "./Input";
 export { Checkbox } from "./Checkbox";
 export { Toaster } from "./Sonner";
 export * from "./Select";
-export * from "./AlertDialog"
+export * from "./AlertDialog";
+export * from "./TextAreaAutosize";
+export * from "./Tooltip";

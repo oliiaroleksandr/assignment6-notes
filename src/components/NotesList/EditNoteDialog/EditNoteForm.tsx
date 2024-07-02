@@ -28,8 +28,8 @@ const EditNoteForm = ({ onDialogClose, id, defaultValues }: Props) => {
       backgroundColor: backgroundColor ?? "#edf0ee",
     });
 
-    toast.success("Edited note successfully");
     onDialogClose();
+    toast.success("Edited note successfully");
   };
 
   return <NoteForm onSubmit={handleSubmit} defaultValues={defaultValues} />;

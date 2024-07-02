@@ -8,6 +8,10 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
   Button,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui";
 import { TrashIcon } from "lucide-react";
 import DeleteNoteButton from "./DeleteNoteButton";
@@ -26,16 +30,23 @@ const DeleteNoteDialog = ({ id }: Props) => {
 
   return (
     <AlertDialog open={isOpen} onOpenChange={setIsOpen}>
-      <AlertDialogTrigger asChild>
-        <Button
-          size="icon"
-          variant="destructive"
-          aria-label="Delete"
-          className="rounded-full"
-        >
-          <TrashIcon className="h-4 w-4" />
-        </Button>
-      </AlertDialogTrigger>
+      <TooltipProvider>
+        <Tooltip delayDuration={200}>
+          <TooltipTrigger asChild>
+            <AlertDialogTrigger asChild>
+              <Button
+                size="icon"
+                variant="destructive"
+                aria-label="Delete"
+                className="rounded-full"
+              >
+                <TrashIcon className="h-4 w-4" />
+              </Button>
+            </AlertDialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>Delete note</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>

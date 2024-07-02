@@ -6,6 +6,10 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui";
 import EditNoteForm from "./EditNoteForm";
 import { NoteSchema } from "@/validations";
@@ -25,14 +29,21 @@ const CreateNoteDialog = (props: Props) => {
 
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      <DialogTrigger asChild>
-        <Button size="icon" className="rounded-full" aria-label="Edit">
-          <PencilIcon className="h-4 w-4" />
-        </Button>
-      </DialogTrigger>
+      <TooltipProvider>
+        <Tooltip delayDuration={200}>
+          <TooltipTrigger asChild>
+            <DialogTrigger asChild>
+              <Button size="icon" className="rounded-full" aria-label="Edit">
+                <PencilIcon className="h-4 w-4" />
+              </Button>
+            </DialogTrigger>
+          </TooltipTrigger>
+          <TooltipContent>Edit note</TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create note</DialogTitle>
+          <DialogTitle className="text-xl">Edit note</DialogTitle>
         </DialogHeader>
         <EditNoteForm onDialogClose={handleDialogClose} {...props} />
       </DialogContent>
