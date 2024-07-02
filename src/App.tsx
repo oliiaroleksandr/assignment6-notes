@@ -1,7 +1,11 @@
+import { CreateNoteDialog } from "./components";
+
 const App = () => {
   return (
-    <div>App</div>
-  )
-}
+    <div className="container py-10">
+      <CreateNoteDialog />
+    </div>
+  );
+};
 
-export default App
+export default App;
