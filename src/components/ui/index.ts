@@ -4,3 +4,4 @@ export * from "./Form";
 export { Input } from "./Input";
 export { Checkbox } from "./Checkbox";
 export { Toaster } from "./Sonner";
+export * from "./Select";
