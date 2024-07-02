@@ -12,8 +12,8 @@ const NotesList = () => {
 
   return (
     <div className="grid grid-cols-4 gap-4">
-      {notes.map(({ id, ...note }) => (
-        <NoteCard key={id} {...note} />
+      {notes.map((note) => (
+        <NoteCard key={note.id} {...note} />
       ))}
     </div>
   );
