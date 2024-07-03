@@ -1,5 +1,5 @@
 import { useNotesStore } from "@/store";
-import NoteCard from "./NoteCard";
+import { NotesDND } from "./NotesDND";
 
 const NotesList = () => {
   const notes = useNotesStore((state) => {
@@ -10,13 +10,7 @@ const NotesList = () => {
 
   if (notes.length === 0) return <p>No notes found</p>;
 
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4">
-      {notes.map((note) => (
-        <NoteCard key={note.id} {...note} />
-      ))}
-    </div>
-  );
+  return <NotesDND notes={notes} />;
 };
 
 export default NotesList;

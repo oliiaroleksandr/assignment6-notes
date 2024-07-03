@@ -25,7 +25,11 @@ const NoteCard = ({
       </h3>
       <div className="flex items-center gap-2 justify-between">
         <p className="text-sm">{createdAt}</p>
-        <div className="flex gap-1.5 items-center">
+        <div
+          className="flex gap-1.5 items-center"
+          onMouseDown={(e) => e.stopPropagation()}
+          onTouchStart={(e) => e.stopPropagation()}
+        >
           <EditNoteDialog
             id={id}
             defaultValues={{ title, backgroundColor, isStarred }}

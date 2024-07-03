@@ -17,7 +17,7 @@ type NotesState = {
   addNote: (note: Note) => void;
   removeNote: (id: string) => void;
   editNote: (id: string, note: Partial<Note>) => void;
-  swapNotes: (index1: number, index2: number) => void;
+  swapNotes: (fromIndex: number, toIndex: number) => void;
   setViewBy: (viewBy: ViewBy) => void;
 };
 
@@ -47,12 +47,11 @@ export const useNotesStore = create(
           }),
         }));
       },
-      swapNotes: (index1, index2) => {
+      swapNotes: (fromIndex, toIndex) => {
         set((state) => {
           const copy = [...state.notes];
-          const temp = copy[index1];
-          copy[index1] = copy[index2];
-          copy[index2] = temp;
+          const [movedNote] = copy.splice(fromIndex, 1);
+          copy.splice(toIndex, 0, movedNote);
 
           return {
             notes: copy,
