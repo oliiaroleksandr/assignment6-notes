@@ -19,14 +19,17 @@ type Props = {
   defaultValues?: NoteSchema;
 };
 
+const localDefaultValues: NoteSchema = {
+  title: "",
+  isStarred: false,
+  backgroundColor: "#edf0ee",
+  textColor: "#000000",
+};
+
 const NoteForm = ({ onSubmit, defaultValues }: Props) => {
   const form = useForm<NoteSchema>({
     resolver: zodResolver(noteSchema),
-    defaultValues: {
-      title: defaultValues?.title ?? "",
-      isStarred: defaultValues?.isStarred ?? false,
-      backgroundColor: defaultValues?.backgroundColor ?? "#ffffff",
-    },
+    defaultValues: defaultValues ?? localDefaultValues,
   });
 
   return (
@@ -49,11 +52,39 @@ const NoteForm = ({ onSubmit, defaultValues }: Props) => {
           control={form.control}
           name="backgroundColor"
           render={({ field }) => (
-            <FormItem>
-              <FormLabel>Background color</FormLabel>
+            <FormItem className="flex items-center gap-4 cursor-pointer">
               <FormControl>
-                <Input type="color" {...field} />
+                <Input type="color" variant="backgroundColor" {...field} />
               </FormControl>
+              <FormLabel className="!mt-0">Background color</FormLabel>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="textColor"
+          render={({ field }) => (
+            <FormItem>
+              <FormControl>
+                <Input
+                  type="color"
+                  variant="backgroundColor"
+                  className="sr-only"
+                  {...field}
+                />
+              </FormControl>
+              <FormLabel className="!mt-0 ml-[5px] flex items-center gap-5 cursor-pointer">
+                <span
+                  className="text-xl w-6 flex items-center justify-center border-b-[6px]"
+                  style={{
+                    borderColor: field.value,
+                  }}
+                >
+                  A
+                </span>
+                <span>Text color</span>
+              </FormLabel>
               <FormMessage />
             </FormItem>
           )}
@@ -62,7 +93,7 @@ const NoteForm = ({ onSubmit, defaultValues }: Props) => {
           control={form.control}
           name="isStarred"
           render={({ field }) => (
-            <FormItem className="flex items-center gap-3">
+            <FormItem className="flex items-center gap-3 pt-2.5">
               <FormControl>
                 <Checkbox
                   checked={field.value}

@@ -9,13 +9,14 @@ const NoteCard = ({
   backgroundColor,
   createdAt,
   isStarred,
+  textColor,
 }: Note) => {
   return (
     <div
-      className="px-6 pb-4 pt-6 rounded-2xl min-h-20 flex flex-col justify-between"
-      style={{ backgroundColor }}
+      className="px-6 pb-4 pt-6 rounded-2xl min-h-20 flex flex-col justify-between h-full"
+      style={{ backgroundColor, color: textColor }}
     >
-      <h3 className="scroll-m-20 text-xl font-semibold tracking-tight mb-20">
+      <h3 className="scroll-m-20 text-xl font-semibold tracking-tight mb-20 break-words">
         {isStarred ? (
           <span className="float-right ml-2 mb-2 flex items-center justify-center w-7 h-7 rounded-full bg-primary text-yellow-500">
             <Star className="w-3.5 h-3.5 fill-current" />
@@ -32,7 +33,7 @@ const NoteCard = ({
         >
           <EditNoteDialog
             id={id}
-            defaultValues={{ title, backgroundColor, isStarred }}
+            defaultValues={{ title, backgroundColor, isStarred, textColor }}
           />
           <DeleteNoteDialog id={id} />
         </div>

@@ -23,7 +23,13 @@ const SortableNote = ({ id, ...note }: Note) => {
   };
 
   return (
-    <div ref={setNodeRef} style={inlineStyles} {...attributes} {...listeners}>
+    <div
+      ref={setNodeRef}
+      style={inlineStyles}
+      {...attributes}
+      {...listeners}
+      className="touch-none"
+    >
       <NoteCard id={id} {...note} />
     </div>
   );

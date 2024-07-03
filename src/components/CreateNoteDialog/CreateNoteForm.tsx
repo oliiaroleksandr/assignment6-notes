@@ -13,7 +13,7 @@ const CreateNoteForm = ({ onDialogClose }: Props) => {
 
   const handleSubmit = (values: NoteSchema) => {
     const id = uuidv4();
-    
+
     const createdAt = new Date().toLocaleDateString("en-US", {
       year: "numeric",
       month: "long",
@@ -22,10 +22,8 @@ const CreateNoteForm = ({ onDialogClose }: Props) => {
 
     addNote({
       id,
-      title: values.title,
-      isStarred: values.isStarred,
       createdAt,
-      backgroundColor: values.backgroundColor ?? "#edf0ee",
+      ...values,
     });
 
     toast.success("Created note successfully");

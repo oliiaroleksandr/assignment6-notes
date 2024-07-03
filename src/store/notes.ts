@@ -5,6 +5,7 @@ export type Note = {
   id: string;
   title: string;
   backgroundColor: string;
+  textColor: string;
   createdAt: string;
   isStarred: boolean;
 };

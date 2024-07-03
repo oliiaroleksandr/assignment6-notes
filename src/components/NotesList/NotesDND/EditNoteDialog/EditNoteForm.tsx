@@ -2,6 +2,7 @@ import { NoteSchema } from "@/validations";
 import { useNotesStore } from "@/store";
 import { toast } from "sonner";
 import NoteForm from "@/components/NoteForm";
+import { shallowCompare } from "./utils";
 
 type Props = {
   onDialogClose: () => void;
@@ -12,21 +13,13 @@ type Props = {
 const EditNoteForm = ({ onDialogClose, id, defaultValues }: Props) => {
   const editNote = useNotesStore((store) => store.editNote);
 
-  const handleSubmit = ({ title, backgroundColor, isStarred }: NoteSchema) => {
-    if (
-      title === defaultValues.title &&
-      backgroundColor === defaultValues.backgroundColor &&
-      isStarred === defaultValues.isStarred
-    ) {
+  const handleSubmit = (newValues: NoteSchema) => {
+    if (shallowCompare(newValues, defaultValues)) {
       onDialogClose();
       return;
     }
 
-    editNote(id, {
-      title: title,
-      isStarred: isStarred,
-      backgroundColor: backgroundColor ?? "#edf0ee",
-    });
+    editNote(id, newValues);
 
     onDialogClose();
     toast.success("Edited note successfully");
