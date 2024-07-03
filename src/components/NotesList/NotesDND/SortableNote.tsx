@@ -1,6 +1,6 @@
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
-import NoteCard from "./NoteCard";
+import { NoteCard } from "./NoteCard";
 import { Note } from "@/store";
 import { CSSProperties } from "react";
 

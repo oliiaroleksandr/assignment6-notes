@@ -2,6 +2,7 @@ import { Note } from "@/store/notes";
 import { DeleteNoteDialog } from "./DeleteNoteDialog";
 import { EditNoteDialog } from "./EditNoteDialog";
 import { Star } from "lucide-react";
+import { getTextColorForBackground } from "./utils";
 
 const NoteCard = ({
   id,
@@ -11,6 +12,8 @@ const NoteCard = ({
   isStarred,
   textColor,
 }: Note) => {
+  const dateTextColor = getTextColorForBackground(backgroundColor);
+
   return (
     <div
       className="px-6 pb-4 pt-6 rounded-2xl min-h-20 flex flex-col justify-between h-full"
@@ -25,7 +28,9 @@ const NoteCard = ({
         {title}
       </h3>
       <div className="flex items-center gap-2 justify-between">
-        <p className="text-sm">{createdAt}</p>
+        <p className="text-sm" style={{ color: dateTextColor }}>
+          {createdAt}
+        </p>
         <div
           className="flex gap-1.5 items-center"
           onMouseDown={(e) => e.stopPropagation()}
