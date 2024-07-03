@@ -1,5 +1,4 @@
-import { CreateNoteDialog, NotesList } from "./components";
-import { ViewSelect } from "./components";
+import { CreateNoteDialog, NotesList, ViewSelect } from "./components";
 
 const App = () => {
   return (
